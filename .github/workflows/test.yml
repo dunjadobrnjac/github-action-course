@@ -1,4 +1,4 @@
-name: Test Project
+name: Test & Deploy Project 
 
 on:
     push
@@ -18,3 +18,22 @@ jobs:
               run: npm ci  # ili npm install, ali je kao bolje npm ci jer koristi verzije koje su navedene u JSON fajlu
             - name: Run tests
               run: npm test
+
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Get code (download the code from repository to server)
+              uses: actions/checkout@v3
+            
+            - name: Install NodesJS
+              uses: actions/setup-node@v4
+              with:
+                node-version: 20
+            - name: Install dependencies
+              run: npm ci
+
+            - name: Build project
+              run: npm run build
+            - name: Deploy
+              run: echo "Deploying..." # treba uraditi deploy na server, ali onda treba hosting provider
+
