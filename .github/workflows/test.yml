@@ -1,0 +1,20 @@
+name: Test Project
+
+on:
+    push
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Get code (download the code from repository to server)
+              uses: actions/checkout@v3
+            
+            - name: Install NodesJS
+              uses: actions/setup-node@v3
+              with:
+                node-version: 18
+            - name: Install dependencies
+              run: npm ci  # ili nprm install, ali je kao bolje npm ci jer koristi verzije koje su navedene u JSON fajlu
+            - name: Run tests
+              run: npm test
