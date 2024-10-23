@@ -15,6 +15,6 @@ jobs:
               with:
                 node-version: 20
             - name: Install dependencies
-              run: npm ci  # ili nprm install, ali je kao bolje npm ci jer koristi verzije koje su navedene u JSON fajlu
+              run: npm ci  # ili npm install, ali je kao bolje npm ci jer koristi verzije koje su navedene u JSON fajlu
             - name: Run tests
               run: npm test
